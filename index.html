@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API - Estudiantes</title>
+    <link rel="stylesheet" href="./styles.css">
+    <script src="./app.js" defer></script>
+</head>
+<body>
+    <header class="topbar">
+        <div class="topbar__inner">
+            <h1 class="brand">Registro de <span>Estudiantes</span></h1>
+            <button type="button" class="btn" id="btnAdd">+ Añadir</button>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="table-wrap">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Email</th>
+                        <th>Edad</th>
+                        <th class="col-actions">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody"></tbody>
+            </table>
+            <p class="empty" id="empty" hidden>No hay estudiantes registrados.</p>
+        </div>
+    </main>
+
+    <!-- Modal: crear / actualizar -->
+    <dialog id="dlgForm" class="modal">
+        <form id="studentForm" class="modal__box">
+            <h2 id="formTitle">Añadir estudiante</h2>
+            <input type="hidden" name="id">
+            <div class="row">
+                <label class="field">
+                    <span>Nombre</span>
+                    <input type="text" name="firstName" required>
+                </label>
+                <label class="field">
+                    <span>Apellido</span>
+                    <input type="text" name="lastName" required>
+                </label>
+            </div>
+            <div class="row">
+                <label class="field">
+                    <span>Email</span>
+                    <input type="email" name="email" required>
+                </label>
+                <label class="field field--small">
+                    <span>Edad</span>
+                    <input type="number" name="age" min="0" max="120" required>
+                </label>
+            </div>
+            <div class="modal__actions">
+                <button type="button" class="btn btn--ghost" data-close>Cancelar</button>
+                <button type="submit" class="btn" id="formSubmit">Guardar</button>
+            </div>
+        </form>
+    </dialog>
+
+    <!-- Modal: confirmar borrado -->
+    <dialog id="dlgDelete" class="modal modal--small">
+        <div class="modal__box">
+            <h2>¿Está seguro de borrar al estudiante?</h2>
+            <p class="modal__text" id="deleteText"></p>
+            <div class="modal__actions">
+                <button type="button" class="btn btn--ghost" data-close>Cancelar</button>
+                <button type="button" class="btn btn--solid-danger" id="confirmDelete">Sí, borrar</button>
+            </div>
+        </div>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+</body>
+</html>

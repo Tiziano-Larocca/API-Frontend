@@ -1,0 +1,328 @@
+:root {
+    --bg: #0d0709;
+    --bg-soft: #150b0e;
+    --surface: #1c0f13;
+    --surface-2: #241318;
+    --border: #3a1b22;
+    --text: #f3e7e8;
+    --muted: #a58b8f;
+    --red: #e11d2e;
+    --red-dark: #9f1220;
+    --red-glow: rgba(225, 29, 46, 0.35);
+    --green: #3fb27f;
+    --radius: 12px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+    background:
+        radial-gradient(900px 400px at 85% -10%, rgba(225, 29, 46, 0.14), transparent 60%),
+        var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    line-height: 1.5;
+}
+
+/* ---------- Header ---------- */
+.topbar {
+    background: var(--bg-soft);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 2px 24px rgba(0, 0, 0, 0.5);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.topbar__inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    border-left: 4px solid var(--red);
+}
+
+.brand {
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.brand span {
+    color: var(--red);
+}
+
+/* ---------- Layout ---------- */
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 28px 20px 60px;
+}
+
+/* ---------- Tabla ---------- */
+.table-wrap {
+    background: linear-gradient(180deg, var(--surface), var(--bg-soft));
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow-x: auto;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.4);
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+}
+
+.table th {
+    text-align: left;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--muted);
+    background: var(--surface-2);
+    padding: 14px 16px;
+    border-bottom: 2px solid var(--red-dark);
+    white-space: nowrap;
+}
+
+.table td {
+    padding: 13px 16px;
+    border-bottom: 1px solid var(--border);
+}
+
+.table tbody tr {
+    transition: background 0.15s;
+}
+
+.table tbody tr:hover {
+    background: rgba(225, 29, 46, 0.07);
+}
+
+.table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.table td:first-child {
+    color: var(--red);
+    font-family: Consolas, monospace;
+    font-weight: 700;
+}
+
+.col-actions {
+    text-align: right !important;
+    white-space: nowrap;
+}
+
+td.col-actions {
+    display: table-cell;
+}
+
+td.col-actions .btn + .btn {
+    margin-left: 8px;
+}
+
+.empty {
+    text-align: center;
+    color: var(--muted);
+    padding: 40px 16px;
+}
+
+/* ---------- Botones ---------- */
+.btn {
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(180deg, var(--red), var(--red-dark));
+    border: 1px solid var(--red);
+    border-radius: 8px;
+    padding: 10px 22px;
+    transition: filter 0.15s, box-shadow 0.15s, transform 0.1s, background 0.15s;
+}
+
+.btn:hover {
+    filter: brightness(1.15);
+    box-shadow: 0 4px 16px var(--red-glow);
+}
+
+.btn:active {
+    transform: scale(0.97);
+}
+
+.btn:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+}
+
+.btn--sm {
+    font-size: 0.8rem;
+    padding: 6px 14px;
+}
+
+.btn--danger {
+    background: transparent;
+    color: #ff6b78;
+}
+
+.btn--danger:hover {
+    background: var(--red-dark);
+    color: #fff;
+}
+
+.btn--solid-danger {
+    background: var(--red);
+}
+
+.btn--ghost {
+    background: transparent;
+    border-color: var(--border);
+    color: var(--muted);
+}
+
+.btn--ghost:hover {
+    color: var(--text);
+    border-color: var(--muted);
+    box-shadow: none;
+    filter: none;
+}
+
+/* ---------- Modales ---------- */
+.modal {
+    margin: auto;
+    border: 1px solid var(--red-dark);
+    border-radius: var(--radius);
+    background: var(--surface);
+    color: var(--text);
+    width: min(520px, calc(100% - 32px));
+    padding: 0;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(225, 29, 46, 0.15);
+}
+
+.modal--small {
+    width: min(420px, calc(100% - 32px));
+}
+
+.modal::backdrop {
+    background: rgba(5, 2, 3, 0.75);
+    backdrop-filter: blur(3px);
+}
+
+.modal__box {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.modal__box h2 {
+    font-size: 1.2rem;
+    padding-left: 12px;
+    border-left: 3px solid var(--red);
+}
+
+.modal__text {
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
+.modal__actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 6px;
+}
+
+/* ---------- Formulario ---------- */
+.row {
+    display: flex;
+    gap: 12px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    flex: 1;
+}
+
+.field--small {
+    flex: 0 0 100px;
+}
+
+.field span {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: var(--muted);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"] {
+    width: 100%;
+    background: var(--bg);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 0.95rem;
+    font-family: inherit;
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--red);
+    box-shadow: 0 0 0 3px var(--red-glow);
+}
+
+/* ---------- Aviso ---------- */
+.toast {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translate(-50%, 20px);
+    background: var(--surface-2);
+    border: 1px solid var(--green);
+    color: var(--text);
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s, transform 0.25s;
+    z-index: 100;
+    max-width: calc(100% - 32px);
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
+.toast--error {
+    border-color: var(--red);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 600px) {
+    .row {
+        flex-direction: column;
+    }
+
+    .field--small {
+        flex: 1;
+    }
+}
