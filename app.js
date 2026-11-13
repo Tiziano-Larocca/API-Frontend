@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:8080/api/students";
+const API_URL = "https://api-backend-dzzn.onrender.com/api/students";
 
 function obtenerEstudiantes() {
     fetch(API_URL)
