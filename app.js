@@ -83,8 +83,6 @@ function eliminarEstudiante(id) {
     });
 }
 
-obtenerEstudiantePorId(3);
-
 const cuerpoTabla = document.getElementById("tbody");
 const mensajeVacio = document.getElementById("empty");
 
